@@ -3,7 +3,7 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
-
+<link rel="import" href="./fat-score.html">
 
 </head>
 <dom-module id="foodbank-app">
@@ -44,16 +44,23 @@
           url="https://api.edamam.com/search"
           params='{"q":"cranberries", "app_id": "81ba9113", "app_key": "ab10b5ac65b3e3422da39ccde42cbabe", "from":"0", "to":"19", "ingr":"3"}'
           handle-as="json"
-          last-response="{{ajaxResponse}}"></iron-ajax>
+          last-response="{{ajaxResponse}}">
+    </iron-ajax>
 
-      <div class="horizontal-section-container">
-        <template is="dom-repeat" items="[[ajaxResponse.hits]]">
-          <div class="horizontal-section">
-            <h2>[[item.recipe.label]]</h2>
-            <iron-image src="[[item.recipe.image]]" width="256" height="256" sizing="cover" preload fade></iron-image>
-          </div>
-        </template>
-      </div>
+    <div class="horizontal-section-container">
+      <template is="dom-repeat" items="[[ajaxResponse.hits]]">
+        <div class="horizontal-section">
+          <h2>[[item.recipe.label]]</h2>
+          <iron-image src="[[item.recipe.image]]" width="256" height="256" sizing="cover" preload fade></iron-image>
+          <fat-score>
+            <h3>[[score]]</h3>
+            <p>[[total]]</p>
+          </fat-score>
+        </div>
+        
+      </template>
+    </div>
+
   </template>
 
   <script>
@@ -72,7 +79,7 @@
         };
       }
     }
-
     window.customElements.define(FoodbankApp.is, FoodbankApp);
+
   </script>
 </dom-module>
