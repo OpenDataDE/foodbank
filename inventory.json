@@ -1,47 +1,38 @@
 [
   {
-  "product ref" : "701840"
-  "description" : "pancake mix"
-  "packing" : "12/16 oz"
-  "unit weight" : 14
-  "charge per pound" : 0.00
-  "charge per unit" : 12.09
-  "total cost per unit" : 12.09
-  "unit measure" : "case"
-  "qty available" : 106
+  "product ref" : "701840",
+  "description" : "pancake mix",
+  "packing" : "12/16oz",
+  "unit weight" : 14,
+  "charge per pound" : 0.00,
+  "charge per unit" : 12.09,
+  "total cost per unit" : 12.09,
+  "unit measure" : "case",
+  "qty available" : 106,
   },
   {
-  "product ref" : 
-  "description" :
-  "packing" :
-  "unit weight" :
-  "charge per pound" :
-  "charge per unit" :
-  "total cost per unit" :
-  "unit measure" :
-  "qty available" :
+  "product ref" : "700338",
+  "description" : "pancake syrup",
+  "packing" : "12/24oz",
+  "unit weight" : 22,
+  "charge per pound" : 0.00,
+  "charge per unit" : 16.77,
+  "total cost per unit" : 16.77,
+  "unit measure" : "case",
+  "qty available" : 97
   },
   {
-  "product ref" :
-  "description" :
-  "packing" :
-  "unit weight" :
-  "charge per pound" :
-  "charge per unit" :
-  "total cost per unit" :
-  "unit measure" :
-  "qty available" :
-  },{
-  "product ref" :
-  "description" :
-  "packing" :
-  "unit weight" :
-  "charge per pound" :
-  "charge per unit" :
-  "total cost per unit" :
-  "unit measure" :
-  "qty available" :
-  },{
+  "product ref" : "703028",
+  "description" : "cranberry sauce",
+  "packing" : "12/24 oz",
+  "unit weight" : 24,
+  "charge per pound" : 0.00,
+  "charge per unit" : 0.00,
+  "total cost per unit" : 0.00,
+  "unit measure" : "case",
+  "qty available" : 1525
+  },
+  {
   "product ref" :
   "description" :
   "packing" :
