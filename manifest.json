@@ -1,0 +1,7 @@
+{
+  "name": "foodbank",
+  "short_name": "foodbank",
+  "description": "recipes",
+  "start_url": "/",
+  "display": "standalone"
+}
