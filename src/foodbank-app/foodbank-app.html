@@ -1,5 +1,11 @@
-<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
 
+
+</head>
 <dom-module id="foodbank-app">
   <template>
     <style>
@@ -33,7 +39,7 @@
         margin-bottom: 24px;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <h2>Hello seth</h2>
     <iron-ajax auto
           url="https://api.edamam.com/search"
           params='{"q":"cranberries", "app_id": "81ba9113", "app_key": "ab10b5ac65b3e3422da39ccde42cbabe", "from":"0", "to":"19", "ingr":"3"}'
@@ -44,7 +50,7 @@
         <template is="dom-repeat" items="[[ajaxResponse.hits]]">
           <div class="horizontal-section">
             <h2>[[item.recipe.label]]</h2>
-
+            <iron-image src="[[item.recipe.image]]" width="256" height="256" sizing="cover" preload fade></iron-image>
           </div>
         </template>
       </div>
