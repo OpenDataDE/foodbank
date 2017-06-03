@@ -1,0 +1,55 @@
+[
+  {
+  "product ref" : "701840"
+  "description" : "pancake mix"
+  "packing" : "12/16 oz"
+  "unit weight" : 14
+  "charge per pound" : 0.00
+  "charge per unit" : 12.09
+  "total cost per unit" : 12.09
+  "unit measure" : "case"
+  "qty available" : 106
+  },
+  {
+  "product ref" : 
+  "description" :
+  "packing" :
+  "unit weight" :
+  "charge per pound" :
+  "charge per unit" :
+  "total cost per unit" :
+  "unit measure" :
+  "qty available" :
+  },
+  {
+  "product ref" :
+  "description" :
+  "packing" :
+  "unit weight" :
+  "charge per pound" :
+  "charge per unit" :
+  "total cost per unit" :
+  "unit measure" :
+  "qty available" :
+  },{
+  "product ref" :
+  "description" :
+  "packing" :
+  "unit weight" :
+  "charge per pound" :
+  "charge per unit" :
+  "total cost per unit" :
+  "unit measure" :
+  "qty available" :
+  },{
+  "product ref" :
+  "description" :
+  "packing" :
+  "unit weight" :
+  "charge per pound" :
+  "charge per unit" :
+  "total cost per unit" :
+  "unit measure" :
+  "qty available" :
+  },
+]
