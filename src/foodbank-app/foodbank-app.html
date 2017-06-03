@@ -1,0 +1,32 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="foodbank-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class FoodbankApp extends Polymer.Element {
+      static get is() { return 'foodbank-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'foodbank-app'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(FoodbankApp.is, FoodbankApp);
+  </script>
+</dom-module>
