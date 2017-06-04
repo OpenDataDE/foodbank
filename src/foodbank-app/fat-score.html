@@ -13,9 +13,12 @@
     </style>
 
     <!-- shadow DOM goes here -->
-    <h3>Total: [[recipe.label]]</h3>
-    <h3>Saturated: [[saturated]]</h3>
-    <p>Fat Score: [[score]]</p>
+    <template is="dom-repeat" items="[[recipe.ingredientLines]]">
+        <p>[[item]]</p>
+    </template>
+    <p>Total: [[recipe.totalNutrients.FAT.quantity]]</p>
+    <p>Saturated: [[recipe.totalNutrients.FASAT.quantity]]</p>
+    <p>Fat Score: [[calcFatscore(recipe.totalNutrients.FAT.quantity, recipe.totalNutrients.FASAT.quantity)]]</p>
   </template>
 
   <script>
@@ -26,30 +29,29 @@
 
       static get properties() {
         return {
-            total: {
-                type: Number,
-                value: '2'
-            },
-            saturated: {
-                type: Number,
-                value: '0.5'
-            },
-            score: {
-                type: Number
-            },
-            recipe:{
-                type:Object,
-                value:function() {
-                    return {};
+                total: {
+                    type: Number
+                },
+                saturated: {
+                    type: Number                    
+                },
+                score: {
+                    type: Number
+                },
+                recipe:{
+                    type:Object,
+                    value:function() {
+                        return {};
+                    }
                 }
             }
         }
-      }
-    constructor() {
-        super();
-        this.score = 1 - (this.saturated / this.total);
-    }
-
+        constructor() {
+            super();
+        }
+        calcFatscore(total, saturated) {
+            return 1 - (saturated / total);
+        }
     }
     customElements.define(FatScore.is, FatScore);
   </script>
