@@ -52,10 +52,10 @@
         <div class="horizontal-section">
           <h2>[[item.recipe.label]]</h2>
           <iron-image src="[[item.recipe.image]]" width="256" height="256" sizing="cover" preload fade></iron-image>
-          <fat-score>
-            <h3>[[score]]</h3>
-            <p>[[total]]</p>
-          </fat-score>
+          <h3>Total: [[item.recipe.totalNutrients.FAT.quantity]]</h3>
+          <h3>Saturated: [[item.recipe.totalNutrients.FASAT.quantity]]</h3>
+          <p>Fat Score: [[calcFatscore(item.recipe.totalNutrients.FAT.quantity, item.recipe.totalNutrients.FASAT.quantity)]]</p>
+          <fat-score></fat-score>
         </div>
         
       </template>
@@ -77,6 +77,9 @@
             value: 'foodbank-app'
           }
         };
+      }
+       calcFatscore(total, saturated) {
+        return 1 - (saturated / total);
       }
     }
     window.customElements.define(FoodbankApp.is, FoodbankApp);
