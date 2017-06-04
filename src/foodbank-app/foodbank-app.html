@@ -1,85 +1,191 @@
-<head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../../bower_components/app-layout/demo/sample-content.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+
 <link rel="import" href="./fat-score.html">
 
-</head>
 <dom-module id="foodbank-app">
+
   <template>
+
     <style>
-      :host {
-        display: block;
+
+      app-header {
+        background-color: #00897B;
+        color: #fff;
       }
-      iron-image {
-          background-color: lightgray;
-          margin: 1em;
+
+      paper-icon-button {
+        --paper-icon-button-ink-color: white;
       }
-      .horizontal-section-container {
-        display: flex;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -ms-flex-wrap: wrap;
-        -webkit-flex-wrap: wrap;
-        flex-wrap: wrap;
+
+      app-drawer-layout:not([narrow]) [drawer-toggle] {
+        display: none;
       }
-      .horizontal-section {
-        background-color: white;
-        padding: 24px;
-        margin-right: 24px;
-        min-width: 200px;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-                    0 1px 5px 0 rgba(0, 0, 0, 0.12),
-                    0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        max-width: 300px;
-        margin-bottom: 24px;
+    app-drawer section {
+      height: 100%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    app-drawer h2 {
+      margin: 8px 0 0;
+      padding: 18px;
+      font-size: 18px;
+    }
+
+    app-drawer paper-checkbox {
+      display: block;
+      padding: 18px;
+    }
+    app-toolbar {
+      background-color: var(--paper-indigo-500);
+      color: white;
+    }
+      paper-button.indigo {
+        background-color: var(--paper-indigo-500);
+        color: white;
+        margin: 36px;
+        width: 160px;
+        --paper-button-raised-keyboard-focus: {
+          background-color: var(--paper-pink-a200) !important;
+          color: white !important;
+        };
       }
     </style>
-    <h2>Hello seth</h2>
-    <iron-ajax auto
+
+    <app-drawer-layout>
+
+      <app-drawer slot="drawer">
+        
+        <app-toolbar>Food Order</app-toolbar>
+        
+        <section>
+          <paper-checkbox checked="{{chicken}}">
+            chicken
+          </paper-checkbox>
+          <paper-checkbox checked="{{fish}}">
+            fish
+          </paper-checkbox>
+          <paper-checkbox checked="{{tomato}}">
+            tomatoes
+          </paper-checkbox>
+          <paper-checkbox checked="{{onion}}">
+            onions
+          </paper-checkbox>
+          <paper-checkbox checked="{{rice}}">
+            rice
+          </paper-checkbox>
+          <paper-checkbox checked="{{potato}}">
+            potatoes
+          </paper-checkbox>
+          <paper-button raised class="indigo" on-click="searchButton">
+            Search
+          </paper-button>
+        </section>
+      </app-drawer>
+
+      <app-header-layout>
+
+        <app-header slot="header" reveals effects="waterfall">
+          <app-toolbar>
+            <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+            <div main-title>Suggestions</div>
+          </app-toolbar>
+        </app-header>
+
+        <iron-ajax auto
           url="https://api.edamam.com/search"
-          params='{"q":"cranberries", "app_id": "81ba9113", "app_key": "ab10b5ac65b3e3422da39ccde42cbabe", "from":"0", "to":"19", "ingr":"3"}'
+          params='{"q":"chicken+tomatoes+rice", "app_id": "81ba9113", "app_key": "ab10b5ac65b3e3422da39ccde42cbabe", "from":"0", "to":"19", "ingr":"4"}'
           handle-as="json"
           last-response="{{ajaxResponse}}">
-    </iron-ajax>
+        </iron-ajax>
 
-    <div class="horizontal-section-container">
-      <template is="dom-repeat" items="[[ajaxResponse.hits]]">
-        <div class="horizontal-section">
-          <h2>[[item.recipe.label]]</h2>
-          <iron-image src="[[item.recipe.image]]" width="256" height="256" sizing="cover" preload fade></iron-image>
-          <fat-score recipe="[[item.recipe]]"></fat-score>
+        <div class="horizontal-section-container">
+          <template is="dom-repeat" items="[[ajaxResponse.hits]]">
+
+              <fat-score recipe="[[item.recipe]]"></fat-score>
+
+          </template>
         </div>
-        
-      </template>
-    </div>
+
+      </app-header-layout>
+
+    </app-drawer-layout>
 
   </template>
 
   <script>
-    /**
-     * @customElement
-     * @polymer
-     */
-    class FoodbankApp extends Polymer.Element {
-      static get is() { return 'foodbank-app'; }
-      static get properties() {
-        return {
-          prop1: {
-            type: String,
-            value: 'foodbank-app'
-          }
-        };
+
+    Polymer({
+
+      is: 'foodbank-app',
+
+      properties: {
+
+        chicken: {
+          type: Boolean,
+          value: false
+        },
+
+        fish: {
+          type: Boolean,
+          value: false
+        },
+        tomato: {
+          type: Boolean,
+          value: false
+        },
+
+        onion: {
+          type: Boolean,
+          value: false
+        },
+        rice: {
+          type: Boolean,
+          value: false
+        },
+
+        potato: {
+          type: Boolean,
+          value: false
+        }
+      },
+      searchButton: function() {
+        alert('button clicked');
+        var query = "";
+        if (this.chicken) query = query + "chicken+";
+        if (this.fish) query = query + "fish+";
+        if (this.tomato) query = query + "tomato+";
+        if (this.onion) query = query + "onion+";
+        if (this.rice) query = query + "rice+";
+        if (this.potato) query = "potato+";
+        console.log(query);
       }
-       calcFatscore(total, saturated) {
-        return 1 - (saturated / total);
-      }
-    }
-    window.customElements.define(FoodbankApp.is, FoodbankApp);
+    });
 
   </script>
+
 </dom-module>

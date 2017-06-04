@@ -1,5 +1,9 @@
-<link rel="import" href="../polymer/polymer-element.html">
-
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-tooltip/paper-tooltip.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../../bower_components/paper-styles/color.html">
 
 <dom-module id="fat-score">
 
@@ -9,16 +13,195 @@
       /* shadow DOM styles go here */
       :host {
         display: inline-block;
+        padding: 10px;
       }
+      ul {
+        margin-top: 2px;
+        margin-bottom: 0px;
+        padding-left: 12px;
+      }
+    .cafe-header {
+        @apply --paper-font-headline;
+    }
+    .cafe-light {
+         color: var(--paper-grey-600);
+         font-size: 12px;
+         display: inline-flex;
+         width: 100%;
+         padding-top: 4px;
+         padding-bottom: 4px;
+    }
+      .score-number {
+          font-size: 20;
+      }
+      .sub-content {
+          padding: 0px 10px 5px 10px;
+          border-style: solid;
+          border-width: 0px 0px 0px 0px;
+      }
+      .horizontal-section-container {
+        display: flex;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -ms-flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        box-shadow: 0px -3px 1px -2px rgba(0, 0, 0, 0.14),
+                    0px -2px 6px -2px rgba(0, 0, 0, 0.12),
+                    0px -4px 2px -2px rgba(0, 0, 0, 0.2);
+      }
+    .container1 {
+        display: flex;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        box-shadow: 0px -3px 1px -2px rgba(0, 0, 0, 0.14),
+                    0px -2px 6px -2px rgba(0, 0, 0, 0.12),
+                    0px -4px 2px -2px rgba(0, 0, 0, 0.2);
+      }
+      .horizontal-section {
+        background-color: white;
+        padding-bottom: 8px;
+        margin-right: 0px;
+        margin-left: 0px;
+        width: 100%;
+        box-shadow: 0px 2px 2px -2px rgba(0, 0, 0, 0.14),
+                    0px 1px 5px -2px rgba(0, 0, 0, 0.12),
+                    0px 3px 1px -2px rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin-bottom: 10px;
+      }
+      .box-s1 {
+        box-shadow: 0px 2px 2px -0px rgba(0, 0, 0, 0.14),
+                    0px 1px 5px -0px rgba(0, 0, 0, 0.12),
+                    0px 3px 1px -0px rgba(0, 0, 0, 0.2);
+      }
+      .box-s2 {
+        -webkit-box-shadow: inset 0px 96px 80px 0px rgba(0,0,0,0.65);
+        -moz-box-shadow: inset 0px 96px 80px 0px rgba(0,0,0,0.65);
+        box-shadow: inset 0px 96px 80px 0px rgba(0,0,0,0.65);
+      }
+      paper-card {
+          width: 256px;          
+        --paper-card-content: {
+          padding: 0px;
+        };
+      }
+      .ingredients {
+        font-size: 12px;
+          border-bottom-style: solid;
+          border-bottom-width: 1px;
+          border-bottom-color: #f4f4f4;
+
+      }
+      .card-content {
+          background-color: #f4f4f4; 
+      }
+      .ilist {
+        height: 192px;
+          padding-bottom: 12px;
+          padding-top: 12px;            
+          padding-left: 12px;
+          padding-right: 12px;
+          border-bottom-width: 0px;
+          background-color: white;
+          margin-top: 2px !important;
+          margin-bottom: 0px !important;
+          margin-left: 0px !important;
+          margin-right: 0px !important;
+      }
+      .ingredients > h2 {
+          font-size: 16px;
+          font-family: Roboto, Noto, sans-serif;
+          font-weight: normal;
+          text-align: center;
+          background-color: #f4f4f4;
+          margin-top: 0px !important;
+          margin-bottom: 0px !important;
+          padding-bottom: 4px;
+          border-bottom-style: solid;
+          border-bottom-width: 1px;
+          border-bottom-color: lightgray;
+          box-shadow: 0px 3px 2px -2px rgba(0, 0, 0, 0.14),
+                    0px 2px 5px -2px rgba(0, 0, 0, 0.12),
+                    0px 4px 1px -2px rgba(0, 0, 0, 0.2);
+      }
+      .ilist > ul > li {
+        margin: 0px !important;
+        padding-top: 12px;
+        border-bottom-color: #f4f4f4; 
+      }
+          .image-overlay {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: lightgray;
+          }
+
+          .image-overlay > iron-image {
+            display: block;
+          }
+
+          .image-overlay > .overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: auto;
+            color: white;
+            font-size: 20;   
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 33%);
+            padding: 6px;
+          }
+          .half {
+              width: 50%;
+              padding-left:16px;
+              font-size: 12px;
+          }
     </style>
 
     <!-- shadow DOM goes here -->
-    <template is="dom-repeat" items="[[recipe.ingredientLines]]">
-        <p>[[item]]</p>
-    </template>
-    <p>Total: [[recipe.totalNutrients.FAT.quantity]]</p>
-    <p>Saturated: [[recipe.totalNutrients.FASAT.quantity]]</p>
-    <p>Fat Score: [[calcFatscore(recipe.totalNutrients.FAT.quantity, recipe.totalNutrients.FASAT.quantity)]]</p>
+    <paper-card>
+        <div class="card-content">
+            <div class="image-overlay">
+                <iron-image src="[[recipe.image]]" width="256" height="192" sizing="cover" preload fade></iron-image>
+                <div class="overlay">
+                    [[recipe.label]]
+                </div>
+            </div>
+            <div class="ingredients">
+                <h2>Ingredients</h2>
+                <div class="ilist">
+                    <ul>
+                    <template is="dom-repeat" items="[[recipe.ingredientLines]]">
+                        <li>[[item]]</li>
+                    </template>
+                    </ul>
+                </div>
+            </div>
+            <div class="container1">
+                <div class="cafe-light">
+                    <div class="half">
+                        <span>Carbohydrates: [[truncateDecimals(recipe.totalNutrients.CHOCDF.quantity, 0)]]g</span>
+                        <br/>
+                        <span>Protein: [[truncateDecimals(recipe.totalNutrients.PROCNT.quantity, 0)]]g</span>
+                        <br/>
+                    </div>
+                    <div class="half">
+                        <span>Fat: [[truncateDecimals(recipe.totalNutrients.FAT.quantity, 0)]]g</span>
+                        <br/>
+                        <span>Saturated: [[calcFatScore(recipe.totalNutrients.FAT.quantity, recipe.totalNutrients.FASAT.quantity)]]%</span>
+                    </div>
+                </div>
+          
+            </div>
+        </div>
+    </paper-card>
   </template>
 
   <script>
@@ -49,8 +232,24 @@
         constructor() {
             super();
         }
-        calcFatscore(total, saturated) {
-            return 1 - (saturated / total);
+        calcFatScore(total, saturated) {
+            return this.truncateDecimals((saturated / total) * 100, 0);
+        }
+        truncateDecimals (num, digits) {
+            var numS = num.toString(),
+                decPos = numS.indexOf('.'),
+                substrLength = decPos == -1 ? numS.length : 1 + decPos + digits,
+                trimmedResult = numS.substr(0, substrLength),
+                finalResult = isNaN(trimmedResult) ? 0 : trimmedResult;
+
+            return parseFloat(finalResult);
+        }
+        getRatio() {
+            var response = "C:P:F ratio: ";
+            response += this.truncateDecimals(this.recipe.totalNutrients.CHOCDF.quantity, 2) + " : ";
+            response += this.truncateDecimals(this.recipe.totalNutrients.PROCNT.quantity, 2) + " : ";
+            response += this.truncateDecimals(this.recipe.totalNutrients.FAT.quantity, 2);
+            return response
         }
     }
     customElements.define(FatScore.is, FatScore);
