@@ -101,7 +101,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <paper-checkbox checked="{{potato}}">
             potatoes
           </paper-checkbox>
-          <paper-button raised class="indigo" on-click="searchButton">
+          <paper-button raised class="indigo" on-tap="searchButton">
             Search
           </paper-button>
         </section>
@@ -116,9 +116,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </app-toolbar>
         </app-header>
 
-        <iron-ajax auto
+        <iron-ajax
           url="https://api.edamam.com/search"
-          params='{"q":"chicken+tomatoes+rice", "app_id": "81ba9113", "app_key": "ab10b5ac65b3e3422da39ccde42cbabe", "from":"0", "to":"19", "ingr":"4"}'
+          params=""
           handle-as="json"
           last-response="{{ajaxResponse}}">
         </iron-ajax>
@@ -145,6 +145,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       properties: {
 
+        query: {
+          type: String,
+          value: ""
+        },
         chicken: {
           type: Boolean,
           value: false
@@ -174,15 +178,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       },
       searchButton: function() {
-        alert('button clicked');
-        var query = "";
-        if (this.chicken) query = query + "chicken+";
-        if (this.fish) query = query + "fish+";
-        if (this.tomato) query = query + "tomato+";
-        if (this.onion) query = query + "onion+";
-        if (this.rice) query = query + "rice+";
-        if (this.potato) query = "potato+";
-        console.log(query);
+
+        this.query = "";
+        if (this.chicken) this.query = this.query + "chicken+";
+        if (this.fish) this.query = this.query + "fish+";
+        if (this.tomato) this.query = this.query + "tomato+";
+        if (this.onion) this.query = this.query + "onion+";
+        if (this.rice) this.query = this.query + "rice+";
+        if (this.potato) this.query = this.query + "potato+";
+        console.log(this.query);
+        '{"q":"[[query]]", "app_id": "81ba9113", "app_key": "ab10b5ac65b3e3422da39ccde42cbabe", "from":"0", "to":"19", "ingr":"4"}'
+        Polymer.dom(this.root).querySelector('iron-ajax').set( 'params', {"q":this.query, "app_id": "81ba9113", "app_key": "ab10b5ac65b3e3422da39ccde42cbabe", "from":"0", "to":"19", "ingr":"4"});
+        Polymer.dom(this.root).querySelector('iron-ajax').generateRequest();
       }
     });
 
